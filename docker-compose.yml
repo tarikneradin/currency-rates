@@ -1,0 +1,30 @@
+version: '3'
+services:
+  api:
+    build: .
+    ports:
+      - '3000:3000'
+    depends_on:
+      - sqs
+    entrypoint: ['./wait.sh', 'sqs:9324', '--', 'node', 'index.js']
+    environment:
+      - NODE_ENV=production
+      - SQS_ACCESS_KEY_ID=dummy
+      - SQS_SECRET_ACCESS_KEY=dummy
+      - SQS_REGION=dummy
+      - SQS_ENDPOINT=http://sqs:9324/queue/default
+      - SQS_MAX_IN_FLIGHT=15
+  worker:
+    build: .
+    depends_on:
+      - sqs
+    entrypoint: ['./wait.sh', 'sqs:9324', '--', 'node', './workers/exchangeCurrenciesWorker.js']
+    environment:
+      - NODE_ENV=production
+      - SQS_ACCESS_KEY_ID=dummy
+      - SQS_SECRET_ACCESS_KEY=dummy
+      - SQS_REGION=dummy
+      - SQS_ENDPOINT=http://sqs:9324/queue/default
+      - SQS_MAX_IN_FLIGHT=15
+  sqs:
+    image: 'roribio16/alpine-sqs'
