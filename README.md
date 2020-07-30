@@ -34,6 +34,8 @@ Setting up environment file
   SQS_REGION = {sqs_region} #dummy
   SQS_ENDPOINT = {sqs_queue_endpoint} #http://localhost:9324/queue/default
   SQS_MAX_IN_FLIGHT = {sqs_max_in_flight} #15
+  EXCHANGE_API_KEY = {exchange_api_key} #407a7a8df78741478dffdedef314d24a
+  EXCHANGE_API_URL = {exchange_api_url} #https://openexchangerates.org/api/
 ```
 
 # Docker compose setup (SQS + NodeJs + Worker)
@@ -45,7 +47,7 @@ Setting up environment file
 
 # High availability scenario docker setup (SQS + NodeJs x2 + Worker x2 + NGINX)
 
-- The purpose of this setup is to reproduce high availability scenario with 2 instances of API and Exchange Worker, SQS service and NGINX as load balancer to achieve high availability and smooth handling of burstable loads.
+- The purpose of this setup is to reproduce high availability scenario with 2 instances of API and Exchange Worker, SQS service and NGINX as load balancer to achieve high availability and smooth handling of burstable loads. Therefore, we assure that server will not crash during load peaks.
 
 - yarn install
 - yarn build

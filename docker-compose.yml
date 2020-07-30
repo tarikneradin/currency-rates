@@ -14,6 +14,8 @@ services:
       - SQS_REGION=dummy
       - SQS_ENDPOINT=http://sqs:9324/queue/default
       - SQS_MAX_IN_FLIGHT=15
+      - EXCHANGE_API_KEY=407a7a8df78741478dffdedef314d24a
+      - EXCHANGE_API_URL=https://openexchangerates.org/api/
   worker:
     build: .
     depends_on:
@@ -26,5 +28,7 @@ services:
       - SQS_REGION=dummy
       - SQS_ENDPOINT=http://sqs:9324/queue/default
       - SQS_MAX_IN_FLIGHT=15
+      - EXCHANGE_API_KEY=407a7a8df78741478dffdedef314d24a
+      - EXCHANGE_API_URL=https://openexchangerates.org/api/
   sqs:
     image: 'roribio16/alpine-sqs'

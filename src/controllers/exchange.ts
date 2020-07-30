@@ -9,7 +9,7 @@ import sqs from '../sqs';
  * Home page.
  * @route GET /
  */
-export const getConversionRate = (req: ValidatedRequest<ExchangeRequestSchema>, res: Response): void => {
+export const getConversionRate = (req: ValidatedRequest<ExchangeRequestSchema>, res: Response): Response<any> => {
   try {
     const { currencyFrom, currencyTo, email } = req.query;
     const sqsPayload: ExchangeMessage = {
@@ -20,9 +20,9 @@ export const getConversionRate = (req: ValidatedRequest<ExchangeRequestSchema>, 
 
     console.log(`Exchange rate requested.`);
     sqs.sendMessage(`conversion`, sqsPayload);
-    res.sendStatus(200);
+    return res.sendStatus(200);
   } catch (error) {
     console.log(`error`, error);
-    res.sendStatus(400);
+    return res.sendStatus(400);
   }
 };
