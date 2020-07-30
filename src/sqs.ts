@@ -1,6 +1,5 @@
 import { Squiss, IMessageToSend, IMessageAttributes } from 'squiss-ts';
 import config from './config';
-import console from 'console';
 
 const DEFAULT_DELAY = 0;
 
