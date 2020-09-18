@@ -1,6 +1,6 @@
 # Currency exchange rate API
 
-Currency exchange rates is simple NodeJs application which provides REST API for fetching currency exchange rate.
+Currency exchange rates is simple NodeJs application which provides REST API for fetching currency exchange rate. (Docker, SQS, NodeJs, NodeJs Workers, NGINX)
 
 # Development mode
 
