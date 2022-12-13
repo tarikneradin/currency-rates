@@ -59,7 +59,7 @@
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-joi-validation": "^4.0.4-beta.0",
     "express-joi-validator": "^2.0.1",
     "lusca": "^1.6.1",
